@@ -1,0 +1,56 @@
+
+<?php
+$N = $_GET['N'];
+function contentFile(){
+        $fo = fopen("text.txt", 'r'); // Открывает файлы для чтения
+    $read = file('text.txt');
+    foreach ($read as $line) {
+        echo $line . "<br>";
+    }
+}
+function explodeFile($N)
+{
+    $fo = fopen("text.txt", 'r'); // Открывает файлы для чтения
+    $read = file('text.txt');
+    $string = implode(' ',$read);
+    foreach (explode(" ",$string) as $line) {
+        if (strlen($line) <= $N) {
+            echo $line . " ";
+        }
+    }
+    fclose($fo);
+}
+ contentFile();
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+        .center {
+            width: 400px;
+        }
+        .form-control {
+            margin:20px;
+        }
+        button {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <div class="center">
+        <div class="form-group">
+    <textarea  name ="N" class="form-control" id="exampleTextarea" rows="3" placeholder = "Введите длину"></textarea>
+    <textarea  name ="Final" class="form-control" id="exampleTextarea" rows="3" placeholder="<?php explodeFile($N);?>"></textarea>
+    <button type="submit" class="btn btn-success">Success</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
+

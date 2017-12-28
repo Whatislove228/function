@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<form action="">
+    <textarea name="a"></textarea>
+    <button type ="SUBMIT">Submit</button>
+</form>
+</body>
+</html>
+<?php
+
+if(!isset($_GET['a']))
+{
+    die;
+}
+else {
+    function getExplode()
+    {
+        $arr = [];
+        foreach (explode(' ',$_GET['a'])  as $value) {
+            $arr[$value] = mb_strlen($value);
+        }
+        return $arr;
+    }
+
+    function Sorting(){
+        $arr = getExplode();
+        arsort($arr);
+        print_r(array_slice($arr, 0 , 3));
+    }
+    Sorting();
+}
+

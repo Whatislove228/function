@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<form method="post">
+    <textarea name="dir" id="" cols="30" rows="5" placeholder="Введите путь к директроии Пример: /var/www/SomeSite.com/function_basics_tasks"></textarea>
+    <textarea name ="word" id="" cols="30" rows="5" placeholder="Сопражённое слово поиска"></textarea>
+    <button type="SUBMIT">Submit</button>
+</form>
+</body>
+</html>
+<?php
+$result = "";
+function seachDir(){
+    if (isset($_POST['dir']) && isset($_POST['word'])) {
+        if(file_exists($_POST['dir'])) {
+            $arr = scandir($_POST['dir']);
+            for ($i = 0; $i < count($arr); $i++) {
+                $position = strpos($arr[$i], $_POST['word']);
+                if ($position !== false) {
+                    $result[] = $arr[$i];
+                }
+            }
+            if(isset($position)) {
+                return $result;
+            }
+        } else {
+            echo "Введите слова";
+        }
+    }
+    else {
+        echo "Путь к файлу введен неверно";
+    }
+}
+ print_r(seachDir());

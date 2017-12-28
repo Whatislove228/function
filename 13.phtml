@@ -1,0 +1,28 @@
+<?php
+$string = $_GET['string'];
+function arrsort($string)
+{
+    $string = explode(' ', $string);
+    $string = array_count_values($string);
+    arsort($string);
+    foreach ($string as $key => $value) {
+        echo $key . ' - ' . $value . "<br>";
+    }
+}
+arrsort($string);
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<form>
+    <textarea name = "string" cols="30" rows="10"></textarea>
+        <button type="SUBMIT">Submit</button>
+</form>
+
+</body>
+</html>

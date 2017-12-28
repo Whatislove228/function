@@ -1,0 +1,45 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+        .center {
+            width: 400px;
+        }
+        .form-control {
+            margin:20px;
+        }
+        button {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <form method="post">
+    <div class="center">
+     <div class="form-group">
+         <textarea  name ="a" class="form-control" id="exampleTextarea" rows="3"></textarea>
+         <textarea  name ="b" class="form-control" id="exampleTextarea" rows="3"></textarea>
+         <button type="submit" class="btn btn-success">Success</button>
+     </div>
+     </div>
+ </form>
+    <?php
+    if(isset($_POST['a']) && isset($_POST['b'])) {
+        echo "Common words: " . implode (" ", getCommonWords($_POST['a'],$_POST['b']));
+    }
+    else {
+        echo "No common words";
+    }
+    ?>
+</body>
+</html>
+<?php
+function getCommonWords($first,$second) {
+    return  array_intersect(explode(" ",$first),explode(" ",$second));
+}
+?>

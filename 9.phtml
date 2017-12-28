@@ -1,0 +1,30 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: default
+ * Date: 08.12.17
+ * Time: 15:06
+ */
+
+function utf8_strrev($str){
+    preg_match_all('/./us', $str, $ar);
+    return implode(array_reverse($ar[0]));
+}
+echo utf8_strrev($_GET['string']);
+
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<form>
+    <textarea name="string" cols="30" rows="10"></textarea>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

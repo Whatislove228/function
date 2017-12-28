@@ -1,0 +1,39 @@
+<?php
+$n=0;
+/*
+ * @a
+ */
+function CCC($n) {
+    if(isset($_GET['a'])) {
+        $arr = explode(" ", $_GET['a']);
+        foreach ($arr as $item) {
+            $n++;
+        }
+        echo "Количество подстрок(слов) в вашей строке = $n";
+    }
+    else{
+        echo "Введите что-то";
+    }
+    return $n;
+}
+
+
+ CCC($n);
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<form>
+    <textarea name="a"></textarea>
+    <button type ="SUBMIT">Submit</button>
+    </textarea>
+</form>
+</body>
+</html>
+
+

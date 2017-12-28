@@ -1,0 +1,18 @@
+<?php
+
+$string ="А Васька слушает да ест. А воз и ныне там. А вы друзья как ни садитесь, все в музыканты не годитесь. А король-то — голый. А ларчик просто открывался. А там хоть трава не расти";
+
+function reverseStatemants($string) {
+    $arr = explode(".",$string);
+    foreach ($arr as $item) {
+        echo $item.".";
+    }
+    echo "<br>";
+    $arrRev = array_reverse($arr);
+    foreach ($arrRev as $item) {
+        echo $item.".";
+    }
+
+}
+
+reverseStatemants($string);

@@ -1,0 +1,22 @@
+<?php
+
+$string = "Shakespeare produced most of his known work between 1589 and 1613.his early plays were primarily comedies and histories, which are regarded as some of the best work ever produced in these genres.";
+
+function UpCase($string) {
+
+    $arr = str_split($string);
+    for($i=0;$i<count($arr);$i++){
+        if ($arr[$i] == '.') {
+            $arr[$i+1] = mb_strtoupper($arr[$i+1]);
+        }
+
+
+    }
+    foreach ($arr as $item) {
+        echo $item;
+    }
+}
+
+ UpCase($string);
+
+?>

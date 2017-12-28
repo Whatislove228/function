@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<form action="">
+    <textarea name="dir" id="" cols="30" rows="10" placeholder="Введите путь к директроии Пример: /var/www/SomeSite.com/function_basics_tasks"></textarea>
+    <button type="SUBMIT">Submit</button>
+</form>
+</body>
+</html>
+<?php   
+    function Scanning() {
+        if(!isset($_GET['dir'])) {
+            die;
+        }
+        else {
+            $scanned_dir = scandir($_GET['dir']);
+            echo '<ol>';
+            foreach ($scanned_dir as $value) {
+                if ($value != '.' and $value != '..') {
+                    echo '<li><a href="$scanned_dir" ' . $value . '>' . $value . '</a></li><br>';
+                } else {
+                }
+            }
+            echo '</ol>';
+        }
+
+    }
+
+Scanning();
+?>
+
+

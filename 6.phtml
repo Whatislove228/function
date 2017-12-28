@@ -1,0 +1,50 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<form action="" enctype="multipart/form-data" method="post">
+    <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+    <input type="file" name="Picture"/>
+    <button type = "submit">Submit</button>
+    </form>
+</body>
+</html>
+<?php
+/*
+Создать страницу, на которой можно загрузить несколько фотографий в галерею. Все загруженные фото должны помещаться в папку gallery и выводиться на странице в виде таблицы.
+*/
+function downloadFile(){
+    $destination_dir = "";
+    if (!empty($_FILES) && $_FILES['Picture']['error'] == 0) { // Проверяем, загрузил ли пользователь файл
+        $destination_dir   = "/var/www/SomeSite.com/function_basics_tasks/loadFiles/";
+        $name = basename($_FILES["Picture"]["name"]);
+        move_uploaded_file($_FILES['Picture']['tmp_name'],"$destination_dir/$name"); // Перемещаем файл в желаемую директорию
+        echo "File ". "<b>" . $_FILES['Picture']['name'] . "</b>" . " uploaded" . "<br>"; // Оповещаем пользователя об успешной загрузке файла
+    } else {
+        echo 'No File Uploaded'; // Оповещаем пользователя о том, что файл не был загружен
+    }
+    return  $destination_dir;
+
+}
+function EchoDir()
+{
+    $a = downloadFile(); // returned function Upload
+    if (!empty($a)) {
+        $files = scandir($a);
+        echo '<ol>';
+        foreach ($files as $value) {
+            if ($value != '.' and $value != '..') {
+                echo '<li><a href=$files ' . $value . '>' . $value . '</a></li><br>';
+            } else {
+            }
+        }
+        echo '</ol>';
+    }
+}
+
+EchoDir();
+?>
